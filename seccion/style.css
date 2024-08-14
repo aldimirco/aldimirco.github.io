@@ -1,0 +1,267 @@
+body {
+    background: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 100; /* Asegurarse de que esté sobre las imágenes de fondo */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 0.2em 0;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+h4, h5 {
+    font-size: 1.15em;
+    margin: 0.5em 0;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+h2 {
+    font-size: 5vw; /* Ajuste relativo al ancho del viewport */
+    opacity: 100%;
+}
+
+@media (max-width: 600px) {
+    h2 {
+        font-size: 6vw; /* Un tamaño ligeramente mayor en pantallas pequeñas */
+    }
+
+    h3 {
+        font-size: 4vw;
+    }
+
+    h4, h5 {
+        font-size: 3vw;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#uploadForm {
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+    z-index: 100; /* Asegurarse de que esté sobre las imágenes de fondo */
+}
+
+#uploadForm input[type="text"] {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    z-index: 100; /* Asegurarse de que los inputs estén sobre las imágenes de fondo */
+}
+
+#uploadForm button,
+#imageInput,
+#textInputForm button {
+    padding: 10px 20px;
+    background-color: #ff416c;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+    margin: 10px;
+    transition: background-color 0.3s;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    z-index: 100; /* Asegurarse de que los botones estén sobre las imágenes de fondo */
+}
+
+#uploadForm button:hover,
+#imageInput:hover,
+#textInputForm button:hover {
+    background-color: #ff4b2b;
+}
+
+#imageUploadForm button {
+    padding: 10px 20px;
+    background-color: #ff416c;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    transition: background-color 0.3s;
+    z-index: 100; /* Asegurarse de que los botones estén sobre las imágenes de fondo */
+}
+
+#controls {
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    animation: fadeIn 2s ease-in-out;
+    z-index: 100; /* Asegurarse de que los controles estén sobre las imágenes de fondo */
+}
+
+#controls button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #ff416c;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    z-index: 100; /* Asegurarse de que los botones estén sobre las imágenes de fondo */
+}
+
+#controls button:hover {
+    background-color: #ff4b2b;
+}
+
+#audioPlayer {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+#confirmButton {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #ff416c;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    z-index: 100; /* Asegurarse de que el botón esté sobre las imágenes de fondo */
+}
+
+#confirmButton:hover {
+    background-color: #ff4b2b;
+}
+
+#imageUploadForm,
+#textInputForm {
+    margin-top: 20px;
+}
+
+#textInputForm textarea {
+    width: 80%;
+    max-width: 500px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+}
+
+#recordingMessage {
+    font-size: 1.2em;
+    display: none;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#warningMessage {
+    margin: 10px 0;
+    display: none;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Emoticonos animados */
+.emote {
+    position: absolute;
+    top: -70px; /* Comenzar fuera de la vista, por encima de la pantalla */
+    width: 102px;
+    height: 56px;
+    pointer-events: none;
+    z-index: 1; /* Asegurarse de que las imágenes estén detrás del texto */
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh); /* Empezar fuera de la vista, encima de la pantalla */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh); /* Terminar fuera de la vista, debajo de la pantalla */
+        opacity: 0.1;
+    }
+}
+
+#rememberAlert {
+    color: #ff0000;
+}
+
+/* Asegurarse de que los textos y botones estén sobre las imágenes animadas */
+#infoMain, #uploadForm, #controls, #anonymInstructions, #imageUploadForm, #rememberAlert, #textInputForm {
+    z-index: 100; /* Asegurar que todos estos elementos estén sobre las imágenes de fondo */
+}
