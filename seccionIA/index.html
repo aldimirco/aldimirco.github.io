@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fotos editadas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- animate -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- google font -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700,800' rel='stylesheet' type='text/css'>
+    <!-- fullpage -->
+    <link rel="stylesheet" href="css/jquery.fullPage.css">
+    <!-- custom -->
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <!-- Raleway Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap">
+    <!-- Custom CSS -->
+    <style>
+        .body-prueba-fotos {
+            background: #303030;
+            color: #999;
+            font-family: 'Raleway';
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .video-gallery {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .video-frame {
+            width: 300px;
+            height: 300px;
+            margin: 20px;
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            background: #000;
+            border: 2px solid white;
+        }
+
+        .video-frame video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(20px);
+            transition: filter 0.3s;
+        }
+
+        .video-frame.revealed video {
+            filter: none;
+        }
+
+        .video-frame.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        .video-frame.fullscreen video {
+            width: auto;
+            height: 80vh;
+            filter: none;
+            box-sizing: border-box;
+        }
+
+        .video-frame .username {
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 0;
+        }
+
+        .video-frame.fullscreen .username {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            width: auto;
+            background: transparent;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 36px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="body-prueba-fotos">
+
+    <!-- Main content -->
+    <div id="mainContent">
+        <!-- Title -->
+        <h1>Seccion de IA</h1>
+        <!-- Gallery of videos -->
+        <div id="videoGallery" class="video-gallery">
+            <div class="video-frame" onclick="revealVideo(this)">
+                <video src="ruta/del/video1.mp4" controls></video>
+                <div class="username">daantesiito</div>
+            </div>
+            <div class="video-frame" onclick="revealVideo(this)">
+                <video src="ruta/del/video2.mp4" controls></video>
+                <div class="username">JulianPz7</div>
+            </div>
+            <!-- Agrega más video-frames según sea necesario -->
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- fullpage -->
+    <script src="js/jquery.fullPage.js"></script>
+    <!-- smoothScroll -->
+    <script src="js/smoothscroll.js"></script>
+    <!-- wow -->
+    <script src="js/wow.min.js"></script>
+    <!-- text rotater -->
+    <script src="js/jquery.simple-text-rotator.js"></script>
+    <!-- custom -->
+    <script src="js/custom.js"></script>
+</body>
+</html>
