@@ -29,6 +29,11 @@
             font-weight: 400;
         }
 
+        .h2 a {
+            color: inherit; /* Mantiene el color del enlace igual que el color del texto padre */
+            text-decoration: none; /* Opcional: elimina el subrayado de los enlaces */
+        }
+
         .video-gallery {
             text-align: center;
             margin: 20px 0;
@@ -168,7 +173,20 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             animation: fadeInDown 1s ease-in-out;
             z-index: 100;
+            text-align: center;
         }
+
+        /* Estilo para el h2 */
+        .section-title h2, a {
+            color: #6441a5;
+            border: 2px solid #6441a5;
+            border-radius: 10px;
+            padding: 10px; /* Añade espacio interno */
+            margin: 10px; /* Espacio entre los elementos */
+            text-align: center; /* Asegura que el texto dentro del h2 esté centrado */
+            display: inline-block; /* Mantiene el ancho ajustado al contenido */
+        }
+
     </style>
 </head>
 <body class="body-prueba-fotos">
@@ -176,11 +194,14 @@
     <!-- Main content -->
     <div id="mainContent">
         <div id="emote-container"></div>
+        <h2 class="section-title">
+            <a href="https://twitch.tv/aldimirco">twitch.tv/Aldimirco</a>
+        </h2>              
         <!-- Title -->
         <h1 class="section-title">Aldi Resuelve</h1>
         <!-- Gallery of videos -->
         <div id="videoGallery" class="video-gallery">
-            <div class="video-frame" onclick="revealVideo(this)"></div>
+            <div class="video-frame" onclick="revealVideo(this)">
                 <video src="https://github.com/aldimirco/aldimirco.github.io/blob/main/seccionIA/media/gonzitax.mp4?raw=true" controls></video>
                 <div class="username">gonzitax</div>
             </div>
@@ -192,11 +213,11 @@
                 <video src="https://github.com/aldimirco/aldimirco.github.io/blob/main/seccionIA/media/julianpz7.mp4?raw=true" controls></video>
                 <div class="username">JulianPz7</div>
             </div>
-            <div class="video-frame" onclick="revealVideo(this)"></div>
+            <div class="video-frame" onclick="revealVideo(this)">
                 <video src="https://github.com/aldimirco/aldimirco.github.io/blob/main/seccionIA/media/gabomurcia.mp4?raw=true" controls></video>
                 <div class="username">gabomurcia</div>
             </div>
-        </div>        
+        </div>             
     </div>
 
     <!-- jQuery -->
