@@ -24,7 +24,7 @@
         .body-prueba-fotos {
             background: #303030;
             color: #999;
-            font-family: 'Raleway';
+            font-family: 'Raleway', sans-serif;
             font-size: 16px;
             font-weight: 400;
         }
@@ -44,7 +44,25 @@
             cursor: pointer;
             background: #000;
             border: 2px solid white;
+            border-radius: 15px;
         }
+
+        .video-frame.color1 {
+            border-color: #ff4b2b; /* Rojo */
+        }
+
+        .video-frame.color2 {
+            border-color: #3498db; /* Azul */
+        }
+
+        .video-frame.color3 {
+            border-color: #2ecc71; /* Verde */
+        }
+
+        .video-frame.color4 {
+            border-color: #f1c40f; /* Amarillo */
+        }
+
 
         .video-frame video {
             width: 100%;
@@ -108,26 +126,69 @@
             font-size: 36px;
             font-weight: 700;
         }
+
+        .emote {
+            position: absolute;
+            bottom: 100vh; /* Start off-screen, above the viewport */
+            width: 102px;
+            height: 56px;
+            pointer-events: none;
+            z-index: 1; /* Ensure images are behind the text */
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh); /* Start off-screen, above the viewport */
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh); /* End off-screen, below the viewport */
+                opacity: 0.1;
+            }
+        }
+
+        #emote-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Prevents emotes from accumulating at the bottom */
+            pointer-events: none; /* Makes the container non-interactive */
+            z-index: -1; /* Sends the container behind other content */
+        }
+
+        /* Título de la sección */
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease-in-out;
+            z-index: 100;
+        }
     </style>
 </head>
 <body class="body-prueba-fotos">
 
     <!-- Main content -->
     <div id="mainContent">
+        <div id="emote-container"></div>
         <!-- Title -->
-        <h1>Seccion de IA</h1>
+        <h1 class="section-title">Aldi Resuelve</h1>
         <!-- Gallery of videos -->
         <div id="videoGallery" class="video-gallery">
             <div class="video-frame" onclick="revealVideo(this)">
-                <video src="ruta/del/video1.mp4" controls></video>
+                <video src="https://github.com/aldimirco/aldimirco.github.io/blob/main/seccionIA/media/dantesito.mp4?raw=true" controls></video>
                 <div class="username">daantesiito</div>
             </div>
             <div class="video-frame" onclick="revealVideo(this)">
-                <video src="ruta/del/video2.mp4" controls></video>
+                <video src="https://github.com/aldimirco/aldimirco.github.io/blob/main/seccionIA/media/julianpz7.mp4?raw=true" controls></video>
                 <div class="username">JulianPz7</div>
             </div>
-            <!-- Agrega más video-frames según sea necesario -->
-        </div>
+        </div>        
     </div>
 
     <!-- jQuery -->
@@ -144,5 +205,91 @@
     <script src="js/jquery.simple-text-rotator.js"></script>
     <!-- custom -->
     <script src="js/custom.js"></script>
+    <script>
+        function revealVideo(videoFrame) {
+            const video = videoFrame.querySelector('video');
+
+            // Si no ha sido revelado, quitar el blur/opacity pero mantener en pausa
+            if (!videoFrame.classList.contains('revealed')) {
+                videoFrame.classList.add('revealed');
+                video.pause();  // Asegurarnos que se mantenga en pausa
+                video.removeAttribute('controls');  // Quitar controles mientras no esté fullscreen
+            } else {
+                // Si ya está revelado, alternar el modo fullscreen
+                videoFrame.classList.toggle('fullscreen');
+
+                if (videoFrame.classList.contains('fullscreen')) {
+                    video.setAttribute('controls', 'controls');  // Añadir controles en fullscreen
+                    video.play();  // Reproducir solo cuando esté en fullscreen
+                } else {
+                    video.pause();  // Pausar cuando se salga de fullscreen
+                    video.removeAttribute('controls');  // Quitar controles cuando no esté fullscreen
+                }
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let numEmotes = 100;
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                numEmotes = 30;
+            }
+            const emoteSources = [
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/Smajj.png?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/sittbutluvv.png?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/Sadgers.png?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/peepoLove.png?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/owoL.png?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/OkaygeL.png?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/luvvbutmajj.png?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/Luvv.png?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/luv.png?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/bluwubbers.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/DuckLove.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/DuckSadge.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/Heartgers.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/Lovegers.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/LUBBERS.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/Luv.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/peepoPat.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/pepeLost.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/sadcat.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/Sadge.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/SadgeRain.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/sadJAM.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/sadVegeta.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/sadWankge.gif?raw=true',
+                'https://github.com/daantesiito/daantesiito.github.io/blob/main/images/7tvAldu/SpongeOfLOVE.gif?raw=true'
+            ];
+
+            const emoteContainer = document.getElementById('emote-container');
+
+            for (let i = 0; i < numEmotes; i++) {
+                const emote = document.createElement('img');
+                emote.src = emoteSources[Math.floor(Math.random() * emoteSources.length)];
+                emote.className = 'emote';
+                emote.style.left = Math.random() * 100 + 'vw';
+                emote.style.animationDuration = Math.random() * 5 + 5 + 's';
+                emote.style.animationDelay = Math.random() * 6 + 's';
+                emoteContainer.appendChild(emote);
+            }
+        });
+    </script>
+    <script>
+        function assignRandomColor() {
+            const videoFrames = document.querySelectorAll('.video-frame');
+            const colors = ['color1', 'color2', 'color3', 'color4'];
+
+            videoFrames.forEach(frame => {
+                // Generar un índice aleatorio
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                // Asignar la clase de color aleatoria
+                frame.classList.add(randomColor);
+            });
+        }
+        // Ejecutar cuando la página esté completamente cargada
+        window.onload = assignRandomColor;
+    </script>
 </body>
 </html>
